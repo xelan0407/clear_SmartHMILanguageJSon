@@ -18,12 +18,11 @@ for file in dir_list:
         if '"' in data[key]:
             data[key] = data[key].replace('"', '\\"')
 
-        if file == "de-DE.json":
-                if "\[" in data[key]:
-                    del data[key]
-                    continue
+        if "[" in data[key]:
+            if "[" == str(data[key])[0]:
+                del data[key]   
 
-        if '002_HMI_Errors' in key:
+        elif '002_HMI_Errors' in key:
             del data[key]
         
         elif 'alarm_msg' in key:
