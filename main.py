@@ -62,8 +62,11 @@ for file in dir_list:
     
     # geänderte Daten zurückschreiben
     with open(f'new\\{file}', 'w',  encoding= "utf8") as f:
-        f.write("{ \n",  )
+        result_string = "{ \n"  
         for key, value in data.items():
-            f.write(f'"{key}": "{value}",\n',  )
-        f.write("} \n",  )
+            result_string = result_string + f'"{key}": "{value}",\n'
+
+        result_string = result_string[0:-2]
+        result_string = result_string +"\n}"
+        f.write(result_string,  )
 
